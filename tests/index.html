@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1 id="title">Ophir</h1>
+		<button id="change-text">Click me</button>
+	</body>
+	<script>
+		const button = document.getElementById('change-text');
+		const title = document.getElementById('title');
+
+		button.addEventListener('click', (e) => {
+			title.innerText = 'Changed Test!!';
+		});
+	</script>
+</html>
