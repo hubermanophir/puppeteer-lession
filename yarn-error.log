@@ -1,0 +1,36 @@
+Arguments: 
+  /Users/ophirhuberman/dev/software/n/bin/node /Users/ophirhuberman/.yarn/bin/yarn.js init
+
+PATH: 
+  /Users/ophirhuberman/dev/software/n/bin:/Users/ophirhuberman/.yarn/bin:/Users/ophirhuberman/.config/yarn/global/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ophirhuberman/dev/software/.yarn/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/$
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  12.21.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/Users/ophirhuberman/.yarn/lib/cli.js:137145:13)
+      at Interface.emit (events.js:314:20)
+      at Interface._ttyWrite (readline.js:868:16)
+      at ReadStream.onkeypress (readline.js:205:10)
+      at ReadStream.emit (events.js:314:20)
+      at emitKeys (internal/readline/utils.js:335:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1137:36)
+      at ReadStream.emit (events.js:314:20)
+      at addChunk (_stream_readable.js:297:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
