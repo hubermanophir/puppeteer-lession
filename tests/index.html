@@ -8,14 +8,28 @@
 	</head>
 	<body>
 		<h1 id="title">Ophir</h1>
-		<button id="change-text">Click me</button>
+		<button id="change-text">Change Title</button>
+		<button id="show-image">Show Image</button>
+		<button id="switch-image">Change Image</button>
+		<img id="dog-image" src="./dog1.jpeg" style="display: none" />
 	</body>
 	<script>
 		const button = document.getElementById('change-text');
+		const imageButton = document.getElementById('show-image');
+		const switchImage = document.getElementById('switch-image');
+		const dogImage = document.getElementById('dog-image');
 		const title = document.getElementById('title');
 
 		button.addEventListener('click', (e) => {
 			title.innerText = 'Changed Test!!';
+		});
+
+		imageButton.addEventListener('click', (e) => {
+			dogImage.style = { display: true };
+		});
+
+		switchImage.addEventListener('click', (e) => {
+			dogImage.src = './dog2.jpeg';
 		});
 	</script>
 </html>
