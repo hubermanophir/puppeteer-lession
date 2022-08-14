@@ -50,47 +50,6 @@ function compareScreenshots(testImageName, testNum) {
 		}
 	});
 }
-function compareNotSimilarScreenshots(testImageName, testNum) {
-	return new Promise((resolve, reject) => {
-		const img1 = fs
-			.createReadStream(`./tests/${testImageName}`)
-			.pipe(new PNG())
-			.on('parsed', doneReading);
-		const img2 = fs
-			.createReadStream(`./tests/base.png`)
-			.pipe(new PNG())
-			.on('parsed', doneReading);
-
-		let filesRead = 0;
-		function doneReading() {
-			// Wait until both files are read.
-			if (++filesRead < 2) return;
-
-			// The files should be the same size.
-			assert.equal(img1.width, img2.width);
-			assert.equal(img1.height, img2.height);
-
-			// Do the visual diff.
-			const diff = new PNG({ width: img1.width, height: img2.height });
-			const numDiffPixels = pixelmatch(
-				img1.data,
-				img2.data,
-				diff.data,
-				img1.width,
-				img1.height,
-				{ threshold: 0.1 }
-			);
-
-			// The files should look the same.
-			fs.writeFileSync(
-				`./tests/diff${testNum}.png`,
-				PNG.sync.write(diff)
-			);
-			assert.notEqual(numDiffPixels, 0);
-			resolve();
-		}
-	});
-}
 
 describe('Test puppeteer', () => {
 	before(async () => {
@@ -126,7 +85,7 @@ describe('Test puppeteer', () => {
 		await page.waitForSelector('#dog-image');
 		return compareScreenshots(testImageName, 1);
 	});
-	it('Image test not similar images', async () => {
+	it('Image test similar', async () => {
 		const testImageName = 'test-image.png';
 		page.setViewport({ width: 800, height: 600 });
 		await page.goto(path);
@@ -137,6 +96,6 @@ describe('Test puppeteer', () => {
 			path: `./tests/${testImageName}`,
 		});
 		await page.waitForSelector('#dog-image');
-		return compareNotSimilarScreenshots(testImageName, 2);
+		return !compareScreenshots(testImageName, 2);
 	});
 });
